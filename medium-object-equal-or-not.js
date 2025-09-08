@@ -12,44 +12,66 @@ HINT : hiraukan huruf kapital atau tidak, contoh nama key 'Name' dan 'name' dian
 */
 function isEqual(a, b) {
   // kode kamu di sini
+
+  const lowerCase = (arr) => {
+    return arr.map((el) => el.toLowerCase());
+  };
+
+  const propsA = lowerCase(Object.keys(a));
+  const propsB = lowerCase(Object.keys(b));
+  const isExist = [];
+  if (propsA.length === propsB.length) {
+    for (let i = 0; i <= propsA.length - 1; i++) {
+      for (let j = 0; j <= propsB.length - 1; j++) {
+        if (propsA[i] === propsB[j]) {
+          isExist.push({ [propsA[i]]: true });
+          break;
+        }
+      }
+    }
+
+    return isExist.length === propsA.length;
+  } else {
+    return false;
+  }
 }
 
-let a
-let b
-
-a = {
-  foo: 1,
-  bar: 2
-}
-
-b = {
-  Foo: 8,
-  bAR: 100
-}
-
-console.log(isEqual(a, b)) // true
+let a;
+let b;
 
 a = {
   foo: 1,
   bar: 2,
-  yeah: 9
-}
+};
 
 b = {
   Foo: 8,
-  bAR: 100
-}
+  bAR: 100,
+};
 
-console.log(isEqual(a, b)) // false
+console.log(isEqual(a, b)); // true
 
 a = {
   foo: 1,
-  bar: 2
-}
+  bar: 2,
+  yeah: 9,
+};
 
 b = {
   Foo: 8,
-  bARe: 100
-}
+  bAR: 100,
+};
 
-console.log(isEqual(a, b)) // false
+console.log(isEqual(a, b)); // false
+
+a = {
+  foo: 1,
+  bar: 2,
+};
+
+b = {
+  Foo: 8,
+  bARe: 100,
+};
+
+console.log(isEqual(a, b)); // false
