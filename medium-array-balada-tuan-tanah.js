@@ -21,3 +21,24 @@ input = [1, -2, 3, 0, 5]
 output :
 Tuan Postoro mendapat 900 dollar, harus membayar pajak sebesar 40 dollar, dan ada 1 komplek yang kosong
 */
+
+const solution = (arr, counter = { empty: 0, negative: 0, positive: 0 }) => {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (arr[i] === 0) {
+      counter["empty"]++;
+    }
+
+    arr[i] > 0
+      ? (counter["positive"] += arr[i])
+      : (counter["negative"] -= arr[i]);
+  }
+  const profit = counter.positive * 100;
+  const tax = counter.negative * 20;
+  const idleProperty = counter.empty;
+  const result = `Tuan Postoro mendapat ${profit} dollar, harus membayar pajak sebesar ${tax} dollar, dan ada ${idleProperty} komplek yang kosong`;
+  return result;
+};
+
+console.log(solution([1, 0, -1]));
+console.log(solution([1, 1, 1]));
+console.log(solution([1, -2, 3, 0, 5]));
