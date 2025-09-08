@@ -19,3 +19,28 @@ output :
   Akuntansi: ['Hannah']
 }
 */
+
+const arr = [
+  ["Biologi", "Jonas"],
+  ["Fisika", "Ulrich"],
+  ["Akuntansi", "Hannah"],
+  ["Biologi", "Barbosz"],
+  ["Fisika", "Claudia"],
+  ["Biologi", "Edmund"],
+];
+
+const kompilasi = (arr) => {
+  const res = {};
+
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (res[arr[i][0]]) {
+      res[arr[i][0]].push(arr[i][1]);
+    } else {
+      res[arr[i][0]] = [arr[i][1]];
+    }
+  }
+
+  return res;
+};
+
+console.log(kompilasi(arr));
