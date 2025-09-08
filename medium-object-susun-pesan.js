@@ -22,3 +22,35 @@ outputnya : 'kita akan menyerang besok pagi'
 
 outputnya : 'musuh membawa granat'
 */
+
+const susunPesan = (arr) => {
+  let res = "";
+  const orderedArray = [];
+  for (let i = 0; i <= arr.length - 1; i++) {
+    for (let j = 0; j <= arr.length - 1; j++) {
+      if (arr[j][1] === i + 1) {
+        orderedArray.push(arr[j]);
+      }
+    }
+  }
+  orderedArray.forEach((el) => (res += el[0] + " "));
+  return res;
+};
+
+console.log(
+  susunPesan([
+    ["besok", 4],
+    ["kita", 1],
+    ["akan", 2],
+    ["menyerang", 3],
+    ["pagi", 5],
+  ])
+);
+
+console.log(
+  susunPesan([
+    ["granat", 3],
+    ["musuh", 1],
+    ["membawa", 2],
+  ])
+);
