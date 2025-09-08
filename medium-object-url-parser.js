@@ -6,14 +6,39 @@ Buatlah sebuah fungsi yang bernama urlParser, yang akan menerima input sebuah UR
 
 Contoh ada pada driver code di bawah :
 */
-console.log(urlParser('https://facebook.com/foo'))
+
+const urlParser = (str) => {
+  const res = {};
+  const protocol = str.split("https");
+
+  if (protocol.length > 1) {
+    res.protocol = "https";
+    const slash = protocol[1].split("://");
+    const domain = slash[1].split("/");
+    res.domain = domain[0];
+    res.usernane = domain[1];
+  } else {
+    res.protocol = "http";
+    const slash = protocol[0].split("://");
+    const domain = slash[1].split("/");
+    res.domain = domain[0];
+    if (domain[1]) {
+      res.user = domain[1];
+    } else {
+      res.user = "not available";
+    }
+  }
+  return res;
+};
+
+console.log(urlParser("https://facebook.com/foo"));
 // {
 //   protocol: 'https',
 //   domain: 'facebook.com',
 //   username: 'foo'
 // }
 
-console.log(urlParser('http://imgur.co.id/'))
+console.log(urlParser("http://imgur.co.id/"));
 // {
 //   protocol: 'http',
 //   domain: 'imgur.co.id',
