@@ -19,3 +19,24 @@ Output : [32, 5]
 Input : 9992
 Output : [29, 11, 2]
 */
+
+const solution = (num, res = []) => {
+  const arrNum = String(num)
+    .split("")
+    .map((num) => Number(num));
+
+  const total = arrNum.reduce((acc, currVal) => {
+    return acc + currVal;
+  });
+
+  res.push(total);
+  if (total > 9) {
+    solution(total, res);
+  }
+  return res;
+};
+
+console.log(solution(123));
+console.log(solution(999));
+console.log(solution(542984));
+console.log(solution(9992));
