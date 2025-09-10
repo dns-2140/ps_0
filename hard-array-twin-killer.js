@@ -17,3 +17,23 @@ array = [14, 3, 13, 6, 1, -3, 1, 11, -1, 12, 14, 8, 2, 0, 1, 9]
 output :
   Nama pembunuhnya adalah : zuelo of azjipoh
 */
+
+const solution = (randomLetters, indexArr) => {
+  let theKiller = "";
+  for (let i = 0; i <= indexArr.length - 1; i++) {
+    if (indexArr[i] < 0) {
+      theKiller += " ";
+    } else {
+      theKiller += randomLetters[indexArr[i]];
+    }
+  }
+  return `Nama pembunuhnya adalah: ${theKiller}`;
+};
+
+console.log(solution("yudmjiqouabw", [10, 7, 3, 5, -8, 4, 5, 11, 7]));
+console.log(
+  solution(
+    "poiuytlkjhgfaez",
+    [14, 3, 13, 6, 1, -3, 1, 11, -1, 12, 14, 8, 2, 0, 1, 9]
+  )
+);
