@@ -27,28 +27,67 @@ Gunakanlah fungsi-fungsi yang sudah pernah kamu buat sebelumnya
 
 function getTheMessage(words, keys) {
   // your code here
+  const binaries = [
+    "0000",
+    "0001",
+    "0010",
+    "0011",
+    "0100",
+    "0101",
+    "0110",
+    "0111",
+    "1000",
+    "1001",
+    "1010",
+    "1011",
+    "1100",
+    "1101",
+    "1110",
+    "1111",
+  ];
+
+  let res = "";
+
+  const arrayedSajak = words.map((word) => word.split(" "));
+  console.log(arrayedSajak);
+  const arrayedMappedKeys = keys.map((key) => {
+    console.log(binaries[key]);
+
+    return binaries[key].split("");
+  });
+  console.log(arrayedMappedKeys);
+
+  for (let i = 0; i <= words.length - 1; i++) {
+    for (let j = 0; j < 4; j++) {
+      if (Number(arrayedMappedKeys[i][j])) {
+        res += `${arrayedSajak[i][j]} `;
+      }
+    }
+  }
+
+  return res;
 }
 
-let kunci = [1, 4, 2, 0, 12]
+let kunci = [1, 4, 2, 0, 12];
 
 let sajak = [
-  'Ingatkah kota kelahiran kita',     // 0001 => binary dari 1
-  'Kota Serang nan indah dan lapang', // 0100 => binary dari 4,  hiraukan semua kata setelah 'indah'
-  'Tidak ada musuh dari hati ini',    // 0010 => binary dari 2,  hiraukan semua kata setelah 'dari'
-  'Karena damai selalu dalam diri',   // 0000 => binary dari 0,  tidak ada yang kita ambil
-  'Besok pagi kita menuai padi'       // 1100 => binary dari 12, hiraukan semua kata setelah 'menuai'
-]
+  "Ingatkah kota kelahiran kita", // 0001 => binary dari 1
+  "Kota Serang nan indah dan lapang", // 0100 => binary dari 4,  hiraukan semua kata setelah 'indah'
+  "Tidak ada musuh dari hati ini", // 0010 => binary dari 2,  hiraukan semua kata setelah 'dari'
+  "Karena damai selalu dalam diri", // 0000 => binary dari 0,  tidak ada yang kita ambil
+  "Besok pagi kita menuai padi", // 1100 => binary dari 12, hiraukan semua kata setelah 'menuai'
+];
 
-console.log(getTheMessage(sajak, kunci)) // Kita serang musuh besok pagi
+console.log(getTheMessage(sajak, kunci)); // Kita serang musuh besok pagi
 
-kunci = [0, 1, 0, 2, 10, 2]
+kunci = [0, 1, 0, 2, 10, 2];
 sajak = [
-  'Cantik rupawan dirimu nak',                  // 0000 => binary dari 0
-  'Kulihat dari sembarang posisi dan tertegun', // 0001 => binary dari 1,  hiraukan semua kata setelah 'posisi'
-  'Bidadari terlahir',                          // 0000 => binary dari 0
-  'Akankah aku lawan keelokan ini',             // 0010 => binary dari 2,  hiraukan semua kata setelah 'keelokan'
-  'Di ufuk timur matahari tersenyum',           // 1010 => binary dari 10, hiraukan semua kata setelah 'matahari'
-  'Menerangi ujung lembah tempat kita berdiam', // 0010 => binary dari 2,  hiraukan semua kata setelah 'tempat'
-]
+  "Cantik rupawan dirimu nak", // 0000 => binary dari 0
+  "Kulihat dari sembarang posisi dan tertegun", // 0001 => binary dari 1,  hiraukan semua kata setelah 'posisi'
+  "Bidadari terlahir", // 0000 => binary dari 0
+  "Akankah aku lawan keelokan ini", // 0010 => binary dari 2,  hiraukan semua kata setelah 'keelokan'
+  "Di ufuk timur matahari tersenyum", // 1010 => binary dari 10, hiraukan semua kata setelah 'matahari'
+  "Menerangi ujung lembah tempat kita berdiam", // 0010 => binary dari 2,  hiraukan semua kata setelah 'tempat'
+];
 
-console.log(getTheMessage(sajak, kunci)) // Posisi lawan di timur lembah
+console.log(getTheMessage(sajak, kunci)); // Posisi lawan di timur lembah
