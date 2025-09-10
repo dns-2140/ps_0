@@ -35,3 +35,66 @@ console.log(goodbyeUnique([1, 2, 3, 4, 1, 2, 3])) // [1, 2, 3, 1, 2, 3]
 console.log(goodbyeUnique([5, 4, 3])) // []
 console.log(goodbyeUnique([3, 5, 3, 5, 3])) // [3, 5, 3, 5, 3]
 */
+
+const myIndexOf = (arr, el) => {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (arr[i] === el) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+// let arr = [1, 2, 3, 1, 2, 3, 4, 3, 2, 1];
+// console.log(myIndexOf(arr, 2)); // 1
+// console.log(myIndexOf(arr, 1)); // 0
+// console.log(myIndexOf(arr, 3)); // 2
+
+// const myLastIndexOf = (arr, el) => {
+//   let currIndex;
+//   for (let i = 0; i <= arr.length - 1; i++) {
+//     if (arr[i] === el) {
+//       currIndex = i;
+//     }
+//   }
+//   return currIndex;
+// };
+
+// console.log(myLastIndexOf(arr, 2)); // 8
+// console.log(myLastIndexOf(arr, 1)); // 9
+// console.log(myLastIndexOf(arr, 3)); // 7
+
+const getFrequencies = (arr, res = {}) => {
+  for (let i = 0; i <= arr.length - 1; i++) {
+    res[arr[i]] ? res[arr[i]]++ : (res[arr[i]] = 1);
+  }
+  return res;
+};
+
+const goodbyeUnique = (arr) => {
+  const frequency = getFrequencies(arr);
+  let uniqueElement = [];
+  for (let key in frequency) {
+    if (frequency[key] === 1) {
+      uniqueElement.push(key);
+    }
+  }
+
+  if (uniqueElement.length === 0) {
+    return arr;
+  }
+
+  if (uniqueElement.length > 0) {
+    for (let i = 0; i <= uniqueElement.length - 1; i++) {
+      const uniqueIndex = myIndexOf(arr, Number(uniqueElement[i]));
+      arr.splice(uniqueIndex, 1);
+    }
+    return arr;
+  }
+
+  return res;
+};
+
+console.log(goodbyeUnique([1, 2, 3, 4, 1, 2, 3])); // [1, 2, 3, 1, 2, 3]
+console.log(goodbyeUnique([5, 4, 3])); // []
+console.log(goodbyeUnique([3, 5, 3, 5, 3])); // [3, 5, 3, 5, 3]
