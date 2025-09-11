@@ -6,9 +6,27 @@ Algoritma bubble sort nya silakan dicari via googling :P
 
 function myBubbleSort(arr) {
   // your code here
+  const sort = (swapping = 0) => {
+    for (let i = 0; i <= arr.length - 1; i++) {
+      const a = arr[i];
+      const b = arr[i + 1];
+      if (a > b) {
+        swapping++;
+        arr[i] = b;
+        arr[i + 1] = a;
+      }
+    }
+
+    if (swapping > 0) {
+      sort();
+    }
+  };
+
+  sort();
+  return arr;
 }
 
-let input = [1, 2, 3, 56, 2, 55, 7, 4, 77, 4, 3, 2, 1]
+let input = [1, 2, 3, 56, 2, 55, 7, 4, 77, 4, 3, 2, 1];
 
-console.log(myBubbleSort(input))
+console.log(myBubbleSort(input));
 // [1, 1, 2, 2, 2, 3, 3, 4, 4, 7, 55, 56, 77]
